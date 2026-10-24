@@ -1,0 +1,25 @@
+Model: qwen3:8b
+Instructions: v2 (rules + examples)
+Test comments: 200  (the first 100 are not counted)
+First run: 48.0%  (qwen3:8b, first instructions, same comments)
+Accuracy now: 59.5%  (119 of 200)
+Baseline: 42.0%  (always answering 'other')
+Speed: 7.1 comments per second  (all 127894 comments would take about 5.0 hours)
+
+label       yours  precision  recall     F1
+request        47       0.62    0.85   0.72
+praise         40       0.66    0.68   0.67
+criticism      10       0.29    0.50   0.37
+question        2       0.25    0.50   0.33
+spam           17       0.60    0.35   0.44
+other          84       0.62    0.48   0.54
+Macro F1: 0.51
+
+Confusion table (rows = your label, columns = model label):
+             request   praise criticis question     spam    other
+request           40        0        1        0        1        5
+praise             3       27        3        0        0        7
+criticism          0        0        5        0        0        5
+question           1        0        0        1        0        0
+spam               3        0        1        0        6        7
+other             17       14        7        3        3       40

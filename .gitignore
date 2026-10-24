@@ -1,0 +1,17 @@
+# Comment data stays on my PC
+*.csv
+progress.txt
+
+# The channel's name and handle stay on my PC (see channel.example.json)
+channel.json
+
+# Reports that contain comment text or full answers
+agent_eval_report_*.html
+agent_eval_results_*.json
+
+# Python
+__pycache__/
+*.pyc
+
+# Secrets
+.env

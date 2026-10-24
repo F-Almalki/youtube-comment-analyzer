@@ -1,0 +1,46 @@
+Model: qwen3:8b
+Questions: 60
+
+TEST SET (never used to change the agent). This is the score to report.  Questions: 40
+  Right tool                                                 94.4%  (34 of 36)   95% CI 81.9 to 98.5
+  Right tool and arguments, as the model wrote them          91.7%  (33 of 36)   95% CI 78.2 to 97.1
+  Right tool and arguments, after the check in agent.py      94.4%  (34 of 36)   95% CI 81.9 to 98.5
+  Answer has the tool's main number, or says it cannot know  87.9%  (29 of 33)   95% CI 72.7 to 95.2
+  Everything right                                           90.0%  (36 of 40)   95% CI 76.9 to 96.0
+  The check in agent.py fixed 1 question(s) and broke 0.
+
+  kind           questions    tool  arguments   answer     all
+  cannot_know            4       -          -      3/4     3/4
+  counts                 9     8/9        8/9      8/9     8/9
+  follow_up              2     2/2        2/2      2/2     2/2
+  mods                   7     7/7        7/7      7/7     7/7
+  search                10    9/10       9/10      2/3    9/10
+  two_steps              2     2/2        2/2      2/2     2/2
+  videos                 6     6/6        6/6      5/6     5/6
+
+  Not fully right: 4
+    t09  tool=WRONG arguments=WRONG answer=WRONG  called: search_comments({"keyword": "توم وجيري"})
+    t14  tool=WRONG arguments=WRONG answer=WRONG  called: top_requested_mods({"limit": 10})
+    t32  tool=ok arguments=ok answer=WRONG  called: top_videos({"label": "question", "limit": 5})
+    t38  tool=- arguments=- answer=WRONG  called: label_counts({})
+
+DEV SET (used while writing the agent's instructions).  Questions: 20
+  Right tool                                                 94.4%  (17 of 18)   95% CI 74.2 to 99.0
+  Right tool and arguments, as the model wrote them          94.4%  (17 of 18)   95% CI 74.2 to 99.0
+  Right tool and arguments, after the check in agent.py      94.4%  (17 of 18)   95% CI 74.2 to 99.0
+  Answer has the tool's main number, or says it cannot know  93.8%  (15 of 16)   95% CI 71.7 to 98.9
+  Everything right                                           95.0%  (19 of 20)   95% CI 76.4 to 99.1
+  The check in agent.py fixed 0 question(s) and broke 0.
+
+  kind           questions    tool  arguments   answer     all
+  cannot_know            2       -          -      2/2     2/2
+  counts                 4     4/4        4/4      4/4     4/4
+  mods                   6     6/6        6/6      4/4     6/6
+  search                 3     3/3        3/3      1/1     3/3
+  two_steps              1     1/1        1/1      1/1     1/1
+  videos                 4     3/4        3/4      3/4     3/4
+
+  Not fully right: 1
+    d11  tool=WRONG arguments=WRONG answer=WRONG  called: top_requested_mods({"limit": 10})
+
+Time: 87 seconds, 1.4 per question
